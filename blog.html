@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>blog | Dragonfly Mission International</title>
+  <meta name="description" content="Updates and news from Dragonfly Mission International — serving families in Jinja, Uganda.">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dragonfly Mission International">
+  <meta property="og:title" content="Blog | Dragonfly Mission International">
+  <meta property="og:description" content="Updates and news from Dragonfly Mission International — serving families in Jinja, Uganda.">
+  <meta property="og:image" content="https://static.wixstatic.com/media/53f105_1b6d8d460b9f4fe3b843c632263b4093~mv2.jpg/v1/fill/w_1200,h_630,al_c,q_85/53f105_1b6d8d460b9f4fe3b843c632263b4093~mv2.jpg">
+  <meta property="og:url" content="https://www.dmionline.org/blog.html">
+  <link rel="canonical" href="https://www.dmionline.org/blog.html">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="blog">
+
+  <nav id="site-nav"></nav>
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <section class="hero-page" aria-label="Blog">
+      <div class="hero-bg" style="background-image: url('https://static.wixstatic.com/media/53f105_f6b117a9c7024fafb425f37f0a392420~mv2.jpg/v1/fill/w_1920,h_1080,al_c,q_85,usm_0.66_1.00_0.01/53f105_f6b117a9c7024fafb425f37f0a392420~mv2.jpg');"></div>
+      <div class="slideshow-wrapper">
+        <h1 class="slide-title">blog</h1>
+        <div class="hero-blurb">
+          Updates, stories, and news from Dragonfly Mission International. Follow along as we share
+          what's happening on the ground in Jinja, Uganda — and how your support is making a difference.
+        </div>
+        <button class="scroll-cue" aria-label="Scroll to posts" onclick="document.getElementById('post-feed').scrollIntoView({behavior:'smooth'})">
+          <svg class="scroll-cue-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Post feed -->
+    <section class="blog-feed" id="post-feed" aria-label="Blog posts">
+      <div class="blog-feed-inner">
+        <div class="blog-categories" id="blog-categories"></div>
+        <div id="post-list" aria-live="polite" aria-label="Blog posts"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="nav.js"></script>
+  <script src="posts.js"></script>
+  <script>
+    var PALETTE = ['#E8C84A', '#E87A50', '#6BC5E8', '#50A898'];
+    var activeCategory = 'All Posts';
+
+    function getCategories() {
+      var seen = {};
+      var cats = ['All Posts'];
+      POSTS.forEach(function (p) {
+        if (!seen[p.category]) { seen[p.category] = true; cats.push(p.category); }
+      });
+      return cats;
+    }
+
+    function renderCategories() {
+      var cats = getCategories();
+      document.getElementById('blog-categories').innerHTML = cats.map(function (cat) {
+        return '<a href="#" onclick="setCategory(\'' + cat.replace(/'/g, "\\'") + '\', this); return false;"'
+          + (cat === activeCategory ? ' class="active" aria-current="true"' : '')
+          + '>' + cat + '</a>';
+      }).join('');
+    }
+
+    function renderPosts() {
+      var list = document.getElementById('post-list');
+      var filtered = activeCategory === 'All Posts'
+        ? POSTS
+        : POSTS.filter(function (p) { return p.category === activeCategory; });
+
+      if (!filtered.length) {
+        list.innerHTML = '<p class="no-posts">No posts yet.</p>';
+        return;
+      }
+
+      list.innerHTML = filtered.map(function (post, i) {
+        var color = PALETTE[i % PALETTE.length];
+        return '<a href="post.html?slug=' + post.slug + '" class="blog-post-link">'
+          + '<div class="blog-post-card" style="border-top-color:' + color + '">'
+          +   '<div class="post-card-meta">' + post.category + ' &bull; ' + post.date + '</div>'
+          +   '<div class="post-title" style="color:' + color + '">' + post.title + '</div>'
+          +   '<div class="post-excerpt">' + post.excerpt + '</div>'
+          + '</div>'
+          + '</a>';
+      }).join('');
+    }
+
+    function setCategory(cat, el) {
+      activeCategory = cat;
+      document.querySelectorAll('.blog-categories a').forEach(function (a) {
+        a.classList.remove('active');
+        a.removeAttribute('aria-current');
+      });
+      el.classList.add('active');
+      el.setAttribute('aria-current', 'true');
+      renderPosts();
+    }
+
+    renderCategories();
+    renderPosts();
+  </script>
+</body>
+</html>

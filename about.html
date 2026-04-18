@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>about | Dragonfly Mission International</title>
+  <meta name="description" content="Started in 2008 by Kathy Cernero, DMI serves widows and families in Jinja, Uganda through nutrition, education, and community.">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dragonfly Mission International">
+  <meta property="og:title" content="About | Dragonfly Mission International">
+  <meta property="og:description" content="Started in 2008 by Kathy Cernero, DMI serves widows and families in Jinja, Uganda through nutrition, education, and community.">
+  <meta property="og:image" content="https://static.wixstatic.com/media/53f105_1b6d8d460b9f4fe3b843c632263b4093~mv2.jpg/v1/fill/w_1200,h_630,al_c,q_85/53f105_1b6d8d460b9f4fe3b843c632263b4093~mv2.jpg">
+  <meta property="og:url" content="https://www.dmionline.org/about.html">
+  <link rel="canonical" href="https://www.dmionline.org/about.html">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="about">
+
+  <nav id="site-nav"></nav>
+
+  <main id="main-content">
+
+    <!-- Hero: origin story with slideshow -->
+    <section class="hero-page about-hero" aria-label="Our story">
+      <div class="hero-bg" style="background-image: url('https://static.wixstatic.com/media/53f105_ab230e4a96dd43cfa3006df8332b3dc5~mv2.jpg/v1/fill/w_1920,h_1080,al_c,q_85,usm_0.66_1.00_0.01/53f105_ab230e4a96dd43cfa3006df8332b3dc5~mv2.jpg');"></div>
+
+      <div class="slideshow-wrapper">
+        <h1 class="slide-title">about</h1>
+
+        <div class="slides-container" role="region" aria-label="Our story">
+          <div style="position:relative;">
+            <button class="slide-nav prev" aria-label="Previous slide" onclick="changeSlide(-1)">&#8249;</button>
+
+            <div class="slide active" id="slide-0">
+              Dragonfly Mission International (DMI) is an Indiana-based non-profit organization serving a small
+              community of widows and their families in Jinja, Uganda, Africa. Started in 2008 by Kathy Cernero,
+              DMI has partnered with a local pastor, Musoke Godfrey, to offer a holistic family approach by
+              providing supplemental food, school fees, garden plots, and medical care to meet the needs of these
+              families affected by the HIV/AIDS epidemic in Uganda.
+            </div>
+            <div class="slide" id="slide-1">
+              Our mission evolved organically. Some of our earliest trips to Jinja revealed that many of those
+              affected by HIV were denied essential medicines due in part to poor nutrition. This revelation became
+              the motivation for DMI's mission which began by providing supplemental food to 18 families in
+              Godfrey's church.
+            </div>
+            <div class="slide" id="slide-2">
+              As the program grew, our teams also recognized that many of our widows regularly spent the little
+              income their families earned on school fees, ensuring their children would receive an education.
+              In the spirit of serving these families holistically, DMI has offered school sponsorships to
+              children whose families are a part of our program. Some 60 children are currently sponsored by
+              individuals and families in our network.
+            </div>
+
+            <button class="slide-nav next" aria-label="Next slide" onclick="changeSlide(1)">&#8250;</button>
+          </div>
+
+          <div class="slide-dots">
+            <button class="slide-dot active" aria-label="Slide 1" aria-pressed="true" onclick="goToSlide(0)"></button>
+            <button class="slide-dot" aria-label="Slide 2" aria-pressed="false" onclick="goToSlide(1)"></button>
+            <button class="slide-dot" aria-label="Slide 3" aria-pressed="false" onclick="goToSlide(2)"></button>
+          </div>
+        </div>
+
+        <!-- Scroll cue -->
+        <button class="scroll-cue" aria-label="Scroll to learn more" onclick="document.getElementById('what-we-do').scrollIntoView({behavior:'smooth'})">
+          <svg class="scroll-cue-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- What we do: mission areas -->
+    <section class="about-mission" id="what-we-do" aria-label="What we do">
+      <div class="about-mission-inner">
+        <p class="about-mission-label">what we do</p>
+        <div class="mission-areas">
+
+          <div class="mission-area nutrition">
+            <h2>nutrition</h2>
+            <p>
+              Food is where we start. Our nutrition program provides each family with a monthly supplement
+              of food — typically 25 kilograms of posho and 15 kilograms of beans distributed twice a month.
+              With favorable food pricing, families may also receive vegetables or rice. Food is distributed
+              on the first and third Sunday of each month. During COVID lockdowns our team made direct drops
+              to each family.
+            </p>
+          </div>
+
+          <div class="mission-area education">
+            <h2>education</h2>
+            <p>
+              Due to circumstances resulting from COVID-19, our educational program is currently paused.
+              Schools in Uganda have begun re-opening; however, we are actively evaluating how to ensure
+              the future success of the program and its students. DMI is seeking partnerships with Jinja area
+              schools that will allow for better accountability and transparency. We hope to resume
+              sponsorships shortly — in the meantime, please consider supporting the nutrition program.
+            </p>
+          </div>
+
+          <div class="mission-area community">
+            <h2>community</h2>
+            <p>
+              Each of the families attend a local church community where they are connected with Pastor
+              Godfrey and his wife Pauline. Pastor Godfrey has served the Amber Court neighborhood long
+              before DMI existed. Godfrey and his team assist DMI by providing food drops throughout each
+              month and organizing school fees — a partnership built on trust and shared purpose.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="nav.js"></script>
+  <script>
+    let current = 0;
+    const total = 3;
+
+    function goToSlide(n) {
+      const prev = current;
+      current = (n + total) % total;
+      const slides = document.querySelectorAll('.slide');
+      const dots   = document.querySelectorAll('.slide-dot');
+      slides[prev].classList.remove('active');
+      dots[prev].classList.remove('active');
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      dots.forEach((d, i) => d.setAttribute('aria-pressed', i === current ? 'true' : 'false'));
+    }
+
+    function changeSlide(dir) { goToSlide(current + dir); }
+
+    // Auto-advance — respect prefers-reduced-motion
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInterval(() => changeSlide(1), 6000);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  changeSlide(-1);
+      if (e.key === 'ArrowRight') changeSlide(1);
+    });
+
+    // Touch swipe
+    (function () {
+      var el = document.querySelector('.slides-container');
+      var startX = 0;
+      el.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+      el.addEventListener('touchend',   function (e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) changeSlide(dx < 0 ? 1 : -1);
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
