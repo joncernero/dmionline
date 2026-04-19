@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /post.html
+Disallow: /README.md
+Disallow: /download_images.py
+
+Sitemap: https://www.dmionline.org/sitemap.xml
